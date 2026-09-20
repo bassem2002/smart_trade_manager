@@ -1,28 +1,385 @@
-# smart_trade_manager
+# Smart Trade Manager
 
-A new Flutter project.
+Smart Trade Manager is a **Flutter mobile application for trade and logistics management**, combining Firebase real-time synchronization with on-device Google ML Kit features.
 
-## Getting Started
+The application provides modules for managing products, suppliers and shipments, while integrating OCR, QR/barcode scanning, language detection and translation between **French, English and Arabic**.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Authentication & Cloud Synchronization
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- User registration
+- Login and logout
+- Firebase Authentication
+- Firebase Realtime Database
+- Real-time data updates
+- Offline database persistence
+
+### Trade & Logistics Management
+
+- Product tracking
+- Supplier management
+- Shipment tracking
+- Product stock information
+- Real-time synchronization with Firebase
+
+### Smart Document Scanner
+
+- Capture images using the camera
+- Select images from the gallery
+- Extract text using Google ML Kit OCR
+- Automatic language identification
+- On-device translation
+
+Supported languages:
+
+- English
+- French
+- Arabic
+
+### QR & Barcode Scanner
+
+- QR code detection
+- Barcode detection
+- Camera and gallery image processing
+- Google ML Kit Barcode Scanning
+
+### User Experience
+
+- Multilingual interface (FR / EN / AR)
+- Light and dark themes
+- Local notifications
+- Haptic feedback
+- Persistent user preferences with SharedPreferences
+
+---
+
+## Technology Stack
+
+| Category | Technologies |
+|---|---|
+| Framework | Flutter |
+| Language | Dart |
+| Authentication | Firebase Authentication |
+| Database | Firebase Realtime Database |
+| OCR | Google ML Kit Text Recognition |
+| QR / Barcode | Google ML Kit Barcode Scanning |
+| Language Detection | Google ML Kit Language Identification |
+| Translation | Google ML Kit On-Device Translation |
+| Local Storage | SharedPreferences |
+| Device Integration | Image Picker, Local Notifications, Vibration |
+| Platforms | Android, iOS |
+
+---
+
+## Application Architecture
+
+The project follows a layered Flutter structure with UI screens, reusable widgets and dedicated service classes.
+
+```text
+lib/
+├── main.dart
+│
+├── screens/
+│   ├── home/
+│   ├── products/
+│   ├── suppliers/
+│   ├── shipments/
+│   ├── scanner/
+│   └── settings/
+│
+├── services/
+│   ├── auth_service.dart
+│   ├── firebase_database.dart
+│   ├── ml_service.dart
+│   ├── notification_service.dart
+│   ├── settings_service.dart
+│   └── translation_data.dart
+│
+├── utils/
+│   └── app_theme.dart
+│
+└── widgets/
+    ├── app_drawer.dart
+    ├── custom_button.dart
+    └── dashboard_card.dart
+```
+
+### Service Layer
+
+External services and device integrations are isolated inside dedicated service classes:
+
+```text
+AuthService
+        ↓
+Firebase Authentication
+
+FirebaseDatabaseService
+        ↓
+Firebase Realtime Database
+
+MLService
+        ↓
+Google ML Kit
+
+SettingsService
+        ↓
+SharedPreferences
+
+NotificationService
+        ↓
+Local Notifications
+```
+
+---
+
+## Google ML Kit Integration
+
+Smart Trade Manager integrates several on-device ML Kit capabilities.
+
+### OCR
+
+```text
+Camera / Gallery
+       ↓
+Input Image
+       ↓
+ML Kit Text Recognition
+       ↓
+Extracted Text
+```
+
+Text recognition is used to extract text from documents and images.
+
+### Language Detection
+
+Extracted text can be analyzed automatically to identify its language.
+
+```text
+Extracted Text
+      ↓
+ML Kit Language Identification
+      ↓
+Detected Language
+```
+
+### Translation
+
+Detected text can be translated on-device between:
+
+```text
+English ↔ French ↔ Arabic
+```
+
+using Google ML Kit On-Device Translation.
+
+### QR & Barcode Scanning
+
+```text
+Camera / Gallery
+       ↓
+Input Image
+       ↓
+ML Kit Barcode Scanner
+       ↓
+QR / Barcode Data
+```
+
+---
+
+## Firebase Integration
+
+The application uses:
+
+```text
+Firebase Core
+Firebase Authentication
+Firebase Realtime Database
+```
+
+Realtime Database streams are used to update product, supplier and shipment information dynamically.
+
+Offline persistence is also enabled so cached Firebase data can remain available when network connectivity is temporarily unavailable.
+
+---
 
 ## Firebase Setup
 
-This repository does not include the real Firebase client configuration for security reasons.
+Real Firebase client configuration is intentionally excluded from this public repository.
 
-To run this application with your own Firebase environment, create a project in the [Firebase Console](https://console.firebase.google.com/) and configure FlutterFire:
+The following files are not committed:
+
+```text
+lib/firebase_options.dart
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+```
+
+A safe configuration example is available at:
+
+```text
+lib/firebase_options.example.dart
+```
+
+> The example file is provided for documentation only. It is not intended to replace the configuration generated by FlutterFire.
+
+### 1. Create a Firebase Project
+
+Create your own project using the Firebase Console.
+
+### 2. Install FlutterFire CLI
 
 ```bash
 dart pub global activate flutterfire_cli
+```
+
+### 3. Configure Firebase
+
+From the project root:
+
+```bash
 flutterfire configure
 ```
 
+This generates the Firebase configuration required by the application.
+
+### 4. Enable Firebase Services
+
+Enable:
+
+- **Authentication**
+  - Email / Password provider
+- **Realtime Database**
+
+Make sure your Firebase Realtime Database security rules are appropriate for your environment.
+
+---
+
+## Installation
+
+### Requirements
+
+- Flutter SDK
+- Dart SDK
+- Android Studio or compatible IDE
+- Android SDK
+- Firebase project
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/bassem2002/smart_trade_manager.git
+cd smart_trade_manager
+```
+
+### Install Dependencies
+
+```bash
+flutter pub get
+```
+
+### Configure Firebase
+
+```bash
+flutterfire configure
+```
+
+### Run the Application
+
+```bash
+flutter run
+```
+
+---
+
+## Application Preview
+
+Recommended screenshots for the portfolio:
+
+```text
+Login
+Dashboard
+Products
+OCR & Translation
+QR Scanner
+Settings
+```
+
+For a clean repository structure, screenshots can be stored in:
+
+```text
+docs/screenshots/
+```
+
+Example:
+
+```markdown
+![Dashboard](docs/screenshots/dashboard.png)
+```
+
+---
+
+## Main Dependencies
+
+```yaml
+firebase_core
+firebase_auth
+firebase_database
+shared_preferences
+google_mlkit_text_recognition
+google_mlkit_barcode_scanning
+google_mlkit_language_id
+google_mlkit_translation
+image_picker
+flutter_local_notifications
+vibration
+```
+
+---
+
+## Current Limitations
+
+This project was developed as an academic mobile application and currently has several limitations:
+
+- Product editing and deletion are not fully exposed in the UI
+- Supplier update/delete operations are not implemented
+- Shipment update/delete operations are not implemented
+- No advanced inventory calculation system
+- No role-based access control
+- No search or filtering system
+- No automated unit, widget or integration tests
+- Some features rely on Android/iOS native capabilities and are not available on Flutter Web
+
+---
+
+## Academic Context
+
+Smart Trade Manager was developed as an academic project focused on combining:
+
+- Mobile application development
+- Firebase cloud services
+- Real-time data synchronization
+- Computer vision
+- On-device machine learning
+- Multilingual user interfaces
+- Mobile device integrations
+
+---
+
+## Author
+
+**Bassem Wali**
+
+Software Engineering Student  
+Full-Stack Development & AI Integration
+
+- GitHub: [bassem2002](https://github.com/bassem2002)
+- LinkedIn: [bassem-wali](https://www.linkedin.com/in/bassem-wali)
+
+---
+
+## Project Status
+
+Smart Trade Manager is maintained as part of my software engineering portfolio.
