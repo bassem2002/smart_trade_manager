@@ -296,28 +296,23 @@ flutter run
 
 ## Application Preview
 
-Recommended screenshots for the portfolio:
+### Login
+![Login](images/login.png)
 
-```text
-Login
-Dashboard
-Products
-OCR & Translation
-QR Scanner
-Settings
-```
+### Dashboard
+![Dashboard](images/dashboard.png)
 
-For a clean repository structure, screenshots can be stored in:
+### Product Management
+![Products](images/products.png)
 
-```text
-docs/screenshots/
-```
+### OCR & Translation
+![OCR and Translation](images/ocr-translation.png)
 
-Example:
+### QR & Barcode Scanner
+![QR Scanner](images/qr-scanner.png)
 
-```markdown
-![Dashboard](docs/screenshots/dashboard.png)
-```
+### Settings
+![Settings](images/settings.png)
 
 ---
 
