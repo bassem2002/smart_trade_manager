@@ -303,17 +303,16 @@ flutter run
 ![Dashboard](images/dashboard.png)
 
 ### Product Management
-![Products](images/products.png)
+![Products](images/product.png)
 
 ### OCR & Translation
-![OCR and Translation](images/ocr-translation.png)
+![OCR and Translation](images/ocr-translation.jfif)
 
 ### QR & Barcode Scanner
-![QR Scanner](images/qr-scanner.png)
+![QR Scanner](images/qr-scanner.jfif)
 
 ### Settings
 ![Settings](images/settings.png)
-
 ---
 
 ## Main Dependencies
